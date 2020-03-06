@@ -1,5 +1,4 @@
-var notes = require("../data/tableData");
-var waitListData = require("../data/waitinglistData");
+var noteContests = require("../data/tableData");
 
 
 module.exports = function(app) {
