@@ -1,4 +1,4 @@
-var noteContests = require("../data/tableData");
+var noteContests = require("../db/db.json");
 
 
 module.exports = function(app) {
