@@ -1,5 +1,5 @@
 var noteContests = require("../db/db.json");
-
+var fs = require("fs");
 
 module.exports = function(app) {
 
@@ -9,14 +9,25 @@ module.exports = function(app) {
 
   app.post("/api/notes", function(req, res) {
 
-    if (tableData.length < 5) {
-      tableData.push(req.body);
-      res.json(true);
-    }
-    else {
-      waitListData.push(req.body);
-      res.json(false);
-    }
+    const note = req.body
+    console.log(note);
+
+    noteContests.push(note);
+    console.log(noteContests)
+    // noteContest write to db.json file// 
+
+    fs.writeFile(__dirname + "../db/db.json", JSON.stringify(noteContests), function(err) {
+
+      if (err) {
+        return res.send(err);
+      }
+
+      return res.json(true);
+
+    });
+
+      
+ 
   });
 
 
